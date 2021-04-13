@@ -1,0 +1,55 @@
+<nav
+  class="fixed w-full bg-white z-40 flex items-center justify-between py-3 mx-auto px-8 lg:px-20 xl:px-32 shadow-md"
+>
+  <a
+    href="/"
+    class="text-2xl lg:text-3xl transition-transform hover:scale-105 transform"
+  >
+    <span class="text-blue-500 font-bold">Password</span>Manager
+  </a>
+  <div
+    class="bg-white absolute top-0 right-0 transform translate-x-full md:translate-x-0 md:relative w-full md:w-max h-screen md:h-full flex flex-col md:flex-row items-center justify-center space-y-5 md:space-y-0 md:space-x-5 z-50 md:block transition-transform nav__links"
+  >
+    {% if user.is_authenticated %}
+    <span class="italic text-lg">Hello, {{user.username}}</span>
+    <a href="/logout">
+      <button
+        class="bg-blue-500 hover:bg-blue-700 transition-colors focus:outline-none text-base lg:text-lg text-white font-bold px-6 py-2 rounded-full"
+      >
+        Logout
+      </button>
+    </a>
+
+    {% else %}
+    <a
+      href="#"
+      class="text-base lg:text-lg text-gray-700 hover:text-gray-900 transition-colors font-bold"
+      >About</a
+    >
+    <a
+      href="#"
+      class="text-base lg:text-lg text-gray-700 hover:text-gray-900 transition-colors font-bold"
+      >GitHub</a
+    >
+    <a href="/login">
+      <button
+        class="bg-blue-100 hover:bg-blue-300 focus:outline-none text-base lg:text-lg text-gray-700 hover:text-gray-900 transition-colors font-bold px-6 py-2 rounded-full"
+      >
+        LogIn
+      </button>
+    </a>
+    <a href="/register">
+      <button
+        class="bg-blue-500 hover:bg-blue-700 transition-colors focus:outline-none text-base lg:text-lg text-white font-bold px-6 py-2 rounded-full"
+      >
+        Register
+      </button>
+    </a>
+    {% endif %}
+  </div>
+  <div class="block md:hidden space-y-1 cursor-pointer z-50 nav__burger">
+    <div class="w-7 h-1 bg-black rounded transition-transform line1"></div>
+    <div class="w-7 h-1 bg-black rounded line2"></div>
+    <div class="w-7 h-1 bg-black rounded transition-transform line3"></div>
+  </div>
+</nav>

@@ -1,0 +1,43 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="{% static 'accounts/Icon.svg' %}">
+    <title>Password Manager</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
+    <style>
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #b6d6fc;
+      }
+    </style>
+    <link rel="stylesheet" href="{% static 'accounts/style.css' %}" />
+    <script src="{% static 'accounts/script.js' %}" defer></script>
+  </head>
+  <body class="overflow-x-hidden relative">
+    <header>{%include 'accounts/navbar.html'%}</header>
+    <div class="min-h-screen">
+      <div class="py-12"></div>
+      <main>{%block content%} {%endblock content%}</main>
+      <div class="py-28"></div>
+    </div>
+    <footer>{%include 'accounts/footer.html'%}</footer>
+  </body>
+</html>

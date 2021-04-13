@@ -1,0 +1,74 @@
+{% extends 'accounts/main.html' %} {% block content %} {%load static%}
+<div
+  class="md:container md:mx-auto flex items-center justify-center"
+>
+  <div
+    class="w-full xl:w-2/6 p-10 flex flex-col items-center justify-center z-10"
+  >
+    <h1 class="text-2xl sm:text-3xl font-semibold mb-8">
+      LogIn to your account
+    </h1>
+    <div class="w-full font-medium text-lg text-center text-red-600 mb-2">
+      {% for msg in messages %} {{msg}} {% endfor %}
+    </div>
+    <form
+      id="form"
+      onsubmit="return validateSignIn()"
+      action="{% url 'accounts:login' %}"
+      method="POST"
+    >
+      {% csrf_token %}
+      <label for="name" class="w-full font-medium mb-2"
+        >Username
+        <span
+          class="w-full font-medium text-red-600 ml-2 mb-2 username-error"
+        ></span
+      ></label>
+      <input
+        type="text"
+        name="name"
+        placeholder="Username"
+        class="border border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-blue-700 placeholder-gray-600 focus:placeholder-gray-400 transition-all px-4 py-3 mb-6 w-full rounded username"
+      />
+      <label for="username" class="w-full font-medium mb-2"
+        >Password
+        <span
+          class="w-full font-medium text-red-600 ml-2 mb-2 password-error"
+        ></span
+      ></label>
+      <input
+        type="password"
+        name="password"
+        placeholder="Your Password"
+        class="border border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-blue-700 placeholder-gray-600 focus:placeholder-gray-400 transition-all px-4 py-3 mb-2 w-full rounded password"
+      />
+      <div class="w-full flex items-center justify-between mb-10">
+        <label class="inline-flex items-center">
+          <input
+            type="checkbox"
+            class="h-4 w-4 text-blue-600 checkbox"
+            checked
+          /><span class="ml-2 text-gray-700">Remember me</span>
+        </label>
+        <a href="#" class="font-semibold text-blue-700 italic hover:underline"
+          >Forgot Password?</a
+        >
+      </div>
+      <button
+        class="bg-blue-500 hover:bg-blue-700 transition-colors focus:outline-none text-white font-semibold uppercase py-3 mb-10 w-full rounded"
+      >
+        Log In
+      </button>
+    </form>
+    <p>
+      Don't have an account?
+      <a
+        href="{% url 'accounts:register' %}"
+        class="font-semibold text-blue-700 hover:underline"
+        >Register</a
+      >
+    </p>
+  </div>
+</div>
+<script src="{% static 'accounts/login.js' %}"></script>
+{% endblock content %}

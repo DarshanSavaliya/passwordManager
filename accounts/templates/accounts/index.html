@@ -1,0 +1,68 @@
+{% extends 'accounts/main.html' %} {% block content %} {%load static%}
+<main>
+  <div
+    class="flex flex-col min-h-screen md:flex-row items-center justify-center xl:justify-between relative gap-14 px-8 lg:px-20 xl:px-32"
+  >
+    <img
+      src="{% static 'accounts/blobs/blob1.svg' %}"
+      alt="blob1"
+      class="absolute top-10 -left-2/4 sm:-left-1/4 md:top-40 md:-left-15 lg:top-44 lg:-left-24 z-0"
+    />
+    <div class="xl:w-4/12 z-10">
+      <h1 class="text-4xl xl:text-5xl font-bold mb-3 xl:mb-5">
+        Never forget another password
+      </h1>
+      <p class="text-gray-600 xl:text-lg mb-3 xl:mb-5">
+        Never misplaced. Never forgotten. Our app securely remembers all of your
+        passwords
+      </p>
+      <button
+        class="bg-blue-500 hover:bg-blue-700 transition-colors focus:outline-none text-sm xl:text-base text-white font-bold px-6 py-2 rounded-full"
+      >
+        Get Started
+      </button>
+    </div>
+    <img
+      src="{% static 'accounts/blobs/hero.svg' %}"
+      alt="hero-image"
+      class="w-96 xl:w-2/5 z-10"
+    />
+  </div>
+  <div
+    class="flex flex-col lg:flex-row gap-10 text-center px-8 lg:px-20 xl:px-32"
+  >
+    <div
+      class="flex flex-col items-center justify-center p-2 md:p-6 space-y-5 border border-gray-200 rounded"
+    >
+      <h1 class="text-2xl sm:text-3xl font-bold">
+        Save all your passwords in one place
+      </h1>
+      <p class="text-gray-600 text-sm sm:text-base">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt vero
+        quae eos quod eum voluptatum unde iste, iusto modi dignissimos autem
+        numquam? Odit, eius illum?
+      </p>
+      <img
+        src="{% static 'accounts/blobs/card1.svg' %}"
+        alt="card1"
+        class="w-64"
+      />
+    </div>
+    <div
+      class="flex flex-col items-center justify-center p-2 md:p-6 space-y-5 border border-gray-200 rounded"
+    >
+      <img
+        src="{% static 'accounts/blobs/card2.svg' %}"
+        alt="card1"
+        class="w-64"
+      />
+      <h1 class="text-2xl sm:text-3xl font-bold">Sync across all devices</h1>
+      <p class="text-gray-600 text-sm sm:text-base">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt vero
+        quae eos quod eum voluptatum unde iste, iusto modi dignissimos autem
+        numquam? Odit, eius illum?
+      </p>
+    </div>
+  </div>
+</main>
+{% endblock content %}
