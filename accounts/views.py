@@ -51,13 +51,13 @@ def homepage(request):
             
             elif form_id == '5':
                 tag_id = request.POST['tag_id']
-                pass_id = request.POST['password_id'] 
+                pass_id = request.POST['primary-key'] 
                 password = User_Password.objects.get(pk=pass_id)
                 tag = Tag.objects.get(pk=tag_id)
                 tag.password.remove(password)
             elif form_id == '6':
                 tag_id = request.POST['add_tag_id']
-                pass_id = request.POST['password_id']
+                pass_id = request.POST['primary-key']
                 tag = Tag.objects.get(pk=tag_id)
                 password = User_Password.objects.get(pk=pass_id)
                 tag.password.add(password)
