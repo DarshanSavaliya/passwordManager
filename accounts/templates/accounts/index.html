@@ -16,11 +16,13 @@
         Never misplaced. Never forgotten. Our app securely remembers all of your
         passwords
       </p>
-      <button
-        class="bg-blue-500 hover:bg-blue-700 transition-colors focus:outline-none text-sm xl:text-base text-white font-bold px-6 py-2 rounded-full"
-      >
-        Get Started
-      </button>
+      <a href="/register">
+        <button
+          class="bg-blue-500 hover:bg-blue-700 transition-colors focus:outline-none text-sm xl:text-base text-white font-bold px-6 py-2 rounded-full"
+        >
+          Get Started
+        </button>
+      </a>
     </div>
     <img
       src="{% static 'accounts/blobs/hero.svg' %}"
@@ -30,6 +32,7 @@
   </div>
   <div
     class="flex flex-col lg:flex-row gap-10 text-center px-8 lg:px-20 xl:px-32"
+    id="about-section"
   >
     <div
       class="flex flex-col items-center justify-center p-2 md:p-6 space-y-5 border border-gray-200 rounded"
