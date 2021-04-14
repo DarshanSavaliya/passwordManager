@@ -5,7 +5,7 @@ Saves all of your accounts &amp; passwords
 # Contributors
 
 - [Darshan Savaliya](https://github.com/DarshanSavaliya/)
-- [Vatsal Sakariya](https://github.com/vatsal0601)- [Vatsal Sakariya](https://github.com/vatsal0601)
+- [Vatsal Sakariya](https://github.com/vatsal0601/)
 - [Jainish Savalia](https://github.com/Jainish-S/)
 
 ## Requirements
