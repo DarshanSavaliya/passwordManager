@@ -1,6 +1,6 @@
 # Password Manager
 
-Saves all of your accounts &amp; passwords
+Saves all of your accounts &amp; passwords.  
 For a viewing this app, visit https://pass-word-manager-1.herokuapp.com
 
 # Contributors
