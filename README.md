@@ -29,7 +29,6 @@ pip install -r requirements.txt
 - Perform the following actions
 
 ```bash
-$ cd \passwordManager
 $ python manage.py makemigrations
 $ python manage.py migrate
 $ python manage.py runserver
