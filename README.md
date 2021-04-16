@@ -38,6 +38,6 @@ $ python manage.py runserver
 - Login with   
             &nbsp;&nbsp;&nbsp;&nbsp;username: faculty   
             &nbsp;&nbsp;&nbsp;&nbsp;password: Faculty@123
-## Connecting you database
+## Connecting your database
 
-- Checkout [https://docs.djangoproject.com/en/3.2/ref/databases/](https://docs.djangoproject.com/en/3.2/ref/databases/)
+- Visit [https://docs.djangoproject.com/en/3.2/ref/databases/](https://docs.djangoproject.com/en/3.2/ref/databases/)
