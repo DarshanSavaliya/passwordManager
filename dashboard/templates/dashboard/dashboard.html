@@ -1,342 +1,334 @@
 {% extends 'accounts/main.html' %} {% block content %} {%load static%}
 <main class="relative px-5">
-  <h1 class="tag_pk hidden">0</h1>
-  <div class="grid grid-cols-1 md:grid-cols-5 xl:grid-cols-9">
-    <!-- Change transition -->
-    <div
-      class="fixed inset-0 flex items-center justify-center z-40 transform scale-0 transition-transform add"
-      style="background-color: rgba(0, 0, 0, 0.1); backdrop-filter: blur(10px)"
-    >
-      <form onsubmit="cancel()" method="POST" class="w-5/12">
-        {% csrf_token %}
-        <input value="1" type="text" name="id" class="hidden" />
-        <label for="website" class="w-full font-medium mb-2"
-          >Website<span class="w-full font-medium text-red-600 ml-2 mb-2"></span
-        ></label>
-        <input
-          autocomplete="off"
-          type="text"
-          name="website"
-          placeholder="Website"
-          class="border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-blue-700 placeholder-gray-600 focus:placeholder-gray-400 transition-all px-4 py-3 mb-6 w-full rounded"
-          required
-        />
-        <label for="username" class="w-full font-medium mb-2"
-          >Username
-          <span class="w-full font-medium text-red-600 ml-2 mb-2"></span
-        ></label>
-        <input
-          autocomplete="off"
-          type="text"
-          name="username"
-          placeholder="Username"
-          class="border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-blue-700 placeholder-gray-600 focus:placeholder-gray-400 transition-all px-4 py-3 mb-6 w-full rounded"
-          required
-        />
-        <label for="password" class="w-full font-medium mb-2"
-          >Password
-          <span class="w-full font-medium text-red-600 ml-2 mb-2"></span
-        ></label>
-        <input
-          autocomplete="off"
-          type="password"
-          name="password"
-          placeholder="Password"
-          class="border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-blue-700 placeholder-gray-600 focus:placeholder-gray-400 transition-all px-4 py-3 mb-6 w-full rounded"
-          required
-        />
+	<h1 class="tag_pk hidden">0</h1>
+	<div class="grid grid-cols-1 md:grid-cols-5 xl:grid-cols-9">
+		<!-- Change transition -->
+		<div
+			class="fixed inset-0 flex items-center justify-center z-40 transform scale-0 transition-transform add"
+			style="background-color: rgba(0, 0, 0, 0.1); backdrop-filter: blur(10px)"
+		>
+			<form
+				onsubmit="cancel()"
+				method="POST"
+				class="w-11/12 sm:w-10/12 xl:w-5/12 bg-white p-10 rounded"
+			>
+				{% csrf_token %}
+				<input value="1" type="text" name="id" class="hidden" />
+				<label for="website" class="w-full font-medium mb-2"
+					>Website<span class="w-full font-medium text-red-600 ml-2 mb-2"></span
+				></label>
+				<input
+					autocomplete="off"
+					type="text"
+					name="website"
+					placeholder="Website"
+					class="border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-blue-700 placeholder-gray-600 focus:placeholder-gray-400 transition-all px-4 py-3 mb-6 w-full rounded"
+					required
+				/>
+				<label for="username" class="w-full font-medium mb-2"
+					>Username <span class="w-full font-medium text-red-600 ml-2 mb-2"></span
+				></label>
+				<input
+					autocomplete="off"
+					type="text"
+					name="username"
+					placeholder="Username"
+					class="border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-blue-700 placeholder-gray-600 focus:placeholder-gray-400 transition-all px-4 py-3 mb-6 w-full rounded"
+					required
+				/>
+				<label for="password" class="w-full font-medium mb-2"
+					>Password <span class="w-full font-medium text-red-600 ml-2 mb-2"></span
+				></label>
+				<input
+					autocomplete="off"
+					type="password"
+					name="password"
+					placeholder="Password"
+					class="border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-blue-700 placeholder-gray-600 focus:placeholder-gray-400 transition-all px-4 py-3 mb-6 w-full rounded"
+					required
+				/>
 
-        <label for="notes" class="w-full font-medium mb-2"
-          >Notes <span class="w-full font-medium text-red-600 ml-2 mb-2"></span
-        ></label>
-        <textarea
-          name="notes"
-          placeholder="Notes"
-          class="border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-blue-700 placeholder-gray-600 focus:placeholder-gray-400 transition-all px-4 py-3 mb-6 w-full rounded"
-        ></textarea>
-        <div class="flex items-center justify-center gap-6">
-          <button
-            class="bg-blue-500 hover:bg-blue-700 transition-colors focus:outline-none text-white font-semibold uppercase py-3 w-full rounded"
-          >
-            Add
-          </button>
-          <div
-            class="w-full bg-blue-500 hover:bg-blue-700 transition-colors focus:outline-none text-white font-semibold text-center uppercase py-3 w-full cursor-pointer rounded"
-            onclick="cancel()"
-          >
-            Cancel
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="col-span-2 px-5 pt-5">
-      <div
-        class="bg-blue-500 flex md:hidden items-center text-lg font-bold gap-2 transition-colors p-1 rounded cursor-pointer all-tags-btn"
-      >
-        <i class="fas fa-tags text-white"></i>
-        <h2 class="text-white">All Tags</h2>
-      </div>
-      <div
-        class="bg-white absolute inset-0 md:relative transform -translate-x-full md:translate-x-0 transition-transform px-5 md:px-0 z-10 all-tags-container"
-      >
-        <ul class="space-y-1 tag-container">
-          <input value="5" type="text" name="id" class="hidden" />
-          <input value="0" type="text" name="primary-key" class="hidden" />
-          <div class="w-full tags">
-            <li
-              class="flex items-center text-lg gap-2 border-2 border-transparent hover:border-blue-500 transition-colors p-1 rounded tag"
-            >
-              <i class="fas fa-tag text-blue-500"></i>
-              <h2>General</h2>
-              <h1 class="hidden">0</h1>
-            </li>
-          </div>
-          <h1 class="font-semibold text-blue-600 text-sm pt-2">Tags</h1>
-          {% for tag in tags %}
-          <div class="w-full tags">
-            <li
-              class="flex items-center text-lg gap-2 border-2 border-transparent hover:border-blue-500 transition-colors p-1 rounded tag"
-            >
-              <i class="fas fa-tag text-blue-500"></i>
-              <h2>{{tag.tag_name}}</h2>
-              <h1 class="hidden">{{tag.pk}}</h1>
-            </li>
-          </div>
-          {% endfor %}
-          <div>
-            <form method="POST" class="hidden tag-form">
-              {% csrf_token %}
-              <input value="4" type="text" name="id" class="hidden" />
-              <div class="flex gap-2">
-                <input
-                  type="text"
-                  name="tag_name"
-                  placeholder="Add Tag"
-                  class="border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-blue-700 placeholder-gray-600 focus:placeholder-gray-400 transition-all p-1 w-full rounded"
-                  required
-                />
-                <button
-                  class="bg-green-500 hover:bg-green-700 text-gray-200 transition-colors flex items-center justify-center px-2 rounded"
-                >
-                  <i class="fas fa-check text-lg"></i>
-                </button>
-                <div
-                  class="bg-red-500 hover:bg-red-700 text-gray-200 transition-colors flex items-center justify-center px-3 rounded cursor-pointer cancel-tag"
-                >
-                  <i class="fas fa-times text-lg"></i>
-                </div>
-              </div>
-            </form>
-            <div
-              class="bg-blue-500 hover:bg-blue-700 flex items-center justify-center text-lg text-gray-200 gap-2 transition-colors p-1 mt-1 cursor-pointer rounded add-tag"
-            >
-              <i class="fas fa-tags text-lg"></i>
-              <h2 class="font-semibold">Add Tag</h2>
-            </div>
-          </div>
-        </ul>
-        <div
-          class="bg-blue-500 flex md:hidden items-center justify-center text-lg gap-2 p-1 mt-5 rounded cursor-pointer all-tags-close-btn"
-        >
-          <i class="far fa-times-circle text-white"></i>
-          <h2 class="text-white font-semibold">Close</h2>
-        </div>
-      </div>
-    </div>
-    <div
-      class="col-span-3 xl:border-l xl:border-r border-gray-300 px-5 pt-5 h-3/5 overflow-y-auto mid-div"
-    >
-      <style>
-        .mid-div {
-          height: 67vh;
-        }
-        @media screen and (min-width: 640px) {
-          .mid-div {
-            height: 39.875rem;
-          }
-        }
-      </style>
-      <div class="flex gap-3">
-        <input
-          autocomplete="off"
-          oninput="searchPassword()"
-          type="text"
-          name="search"
-          placeholder="Search"
-          class="border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-blue-700 placeholder-gray-600 focus:placeholder-gray-400 transition-all px-4 py-3 mb-5 w-full rounded search-text"
-        />
-        <img
-          src="{% static 'dashboard/add.svg' %}"
-          alt="add"
-          class="bg-blue-500 hover:bg-blue-700 transition-colors p-3 w-12 h-12 cursor-pointer rounded add-button"
-        />
-      </div>
-      <ul class="card-container">
-        {% for password in passwords %}
-        <li
-          class="flex items-center gap-3 border-2 border-transparent hover:border-blue-500 transition-colors p-3 mb-5 rounded card"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1584425104581-85f2ae2d8c27?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-            alt="Icon"
-            class="w-16 h-16 rounded"
-          />
-          <div>
-            <p class="hidden">{{password.decrypted_note}}</p>
-            <p class="hidden">{{password.decrypted_password}}</p>
-            <h3 class="font-bold teaddxt-lg website-text">
-              {{password.website.url}}
-            </h3>
-            <p class="text-gray-500">{{password.username}}</p>
-            <p class="hidden">{{password.pk}}</p>
-            {% for tag in password.tag_list %}
-            <p class="hidden">{{tag.pk}}</p>
-            <p class="hidden">{{tag.tag_name}}</p>
-            {% endfor %}
-          </div>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-    <div
-      class="col-span-4 bg-white absolute xl:relative inset-0 transform scale-0 xl:scale-100 transition-transform xl:flex flex-col items-center px-5 mx-30 pt-5 z-20 content"
-    >
-      <div
-        class="bg-blue-50 absolute top-10 left-1/3 transform scale-0 transition-transform text-sm md:text-base font-semibold px-6 py-3 shadow-md rounded z-30 message"
-      >
-        <span class="text-green-500">Copied!</span> to clipboard successfully
-      </div>
-      <div
-        class="divide-y divide-gray-300 w-full text-center text-2xl font-semibold alt-container"
-      >
-        <h1>No card selected</h1>
-      </div>
-      <div class="divide-y divide-gray-300 w-full hidden main-container">
-        <form method="POST" id="main-form">
-          {% csrf_token %}
-          <input value="2" type="text" name="id" class="hidden on-delete" />
-          <input type="text" name="primary-key" class="hidden primary-key" />
-          <input type="text" name="add_tag_id" class="hidden add_tag_id" />
+				<label for="notes" class="w-full font-medium mb-2"
+					>Notes <span class="w-full font-medium text-red-600 ml-2 mb-2"></span
+				></label>
+				<textarea
+					name="notes"
+					placeholder="Notes"
+					class="border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-blue-700 placeholder-gray-600 focus:placeholder-gray-400 transition-all px-4 py-3 mb-6 w-full rounded"
+				></textarea>
+				<div class="flex items-center justify-center gap-6">
+					<button
+						class="bg-blue-500 hover:bg-blue-700 transition-colors focus:outline-none text-white font-semibold uppercase py-3 w-full rounded"
+					>
+						Add
+					</button>
+					<div
+						class="w-full bg-blue-500 hover:bg-blue-700 transition-colors focus:outline-none text-white font-semibold text-center uppercase py-3 w-full cursor-pointer rounded"
+						onclick="cancel()"
+					>
+						Cancel
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="col-span-2 px-5 pt-5">
+			<div
+				class="bg-blue-500 flex md:hidden items-center text-lg font-bold gap-2 transition-colors p-1 rounded cursor-pointer all-tags-btn"
+			>
+				<i class="fas fa-tags text-white"></i>
+				<h2 class="text-white">All Tags</h2>
+			</div>
+			<div
+				class="bg-white absolute inset-0 md:relative transform -translate-x-full md:translate-x-0 transition-transform px-5 md:px-0 z-10 all-tags-container"
+			>
+				<ul class="space-y-1 tag-container">
+					<input value="5" type="text" name="id" class="hidden" />
+					<input value="0" type="text" name="primary-key" class="hidden" />
+					<div class="w-full tags">
+						<li
+							class="flex items-center text-lg gap-2 border-2 border-transparent hover:border-blue-500 transition-colors p-1 rounded tag"
+						>
+							<i class="fas fa-tag text-blue-500"></i>
+							<h2>General</h2>
+							<h1 class="hidden">0</h1>
+						</li>
+					</div>
+					<h1 class="font-semibold text-blue-600 text-sm pt-2">Tags</h1>
+					{% for tag in tags %}
+					<div class="w-full tags">
+						<li
+							class="flex items-center text-lg gap-2 border-2 border-transparent hover:border-blue-500 transition-colors p-1 rounded tag"
+						>
+							<i class="fas fa-tag text-blue-500"></i>
+							<h2>{{tag.tag_name}}</h2>
+							<h1 class="hidden">{{tag.pk}}</h1>
+						</li>
+					</div>
+					{% endfor %}
+					<div>
+						<form method="POST" class="hidden tag-form">
+							{% csrf_token %}
+							<input value="4" type="text" name="id" class="hidden" />
+							<div class="flex gap-2">
+								<input
+									type="text"
+									name="tag_name"
+									placeholder="Add Tag"
+									class="border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-blue-700 placeholder-gray-600 focus:placeholder-gray-400 transition-all p-1 w-full rounded"
+									required
+								/>
+								<button
+									class="bg-green-500 hover:bg-green-700 text-gray-200 transition-colors flex items-center justify-center px-2 rounded"
+								>
+									<i class="fas fa-check text-lg"></i>
+								</button>
+								<div
+									class="bg-red-500 hover:bg-red-700 text-gray-200 transition-colors flex items-center justify-center px-3 rounded cursor-pointer cancel-tag"
+								>
+									<i class="fas fa-times text-lg"></i>
+								</div>
+							</div>
+						</form>
+						<div
+							class="bg-blue-500 hover:bg-blue-700 flex items-center justify-center text-lg text-gray-200 gap-2 transition-colors p-1 mt-1 cursor-pointer rounded add-tag"
+						>
+							<i class="fas fa-tags text-lg"></i>
+							<h2 class="font-semibold">Add Tag</h2>
+						</div>
+					</div>
+				</ul>
+				<div
+					class="bg-blue-500 flex md:hidden items-center justify-center text-lg gap-2 p-1 mt-5 rounded cursor-pointer all-tags-close-btn"
+				>
+					<i class="far fa-times-circle text-white"></i>
+					<h2 class="text-white font-semibold">Close</h2>
+				</div>
+			</div>
+		</div>
+		<div
+			class="col-span-3 xl:border-l xl:border-r border-gray-300 px-5 pt-5 h-3/5 overflow-y-auto mid-div"
+		>
+			<style>
+				.mid-div {
+					height: 67vh;
+				}
+				@media screen and (min-width: 640px) {
+					.mid-div {
+						height: 39.875rem;
+					}
+				}
+			</style>
+			<div class="flex gap-3">
+				<input
+					autocomplete="off"
+					oninput="searchPassword()"
+					type="text"
+					name="search"
+					placeholder="Search"
+					class="border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-blue-700 placeholder-gray-600 focus:placeholder-gray-400 transition-all px-4 py-3 mb-5 w-full rounded search-text"
+				/>
+				<img
+					src="{% static 'dashboard/add.svg' %}"
+					alt="add"
+					class="bg-blue-500 hover:bg-blue-700 transition-colors p-3 w-12 h-12 cursor-pointer rounded add-button"
+				/>
+			</div>
+			<ul class="card-container">
+				{% for password in passwords %}
+				<li
+					class="flex items-center gap-3 border-2 border-transparent hover:border-blue-500 transition-colors p-3 mb-5 rounded card"
+				>
+					<img
+						src="https://images.unsplash.com/photo-1584425104581-85f2ae2d8c27?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+						alt="Icon"
+						class="w-16 h-16 rounded"
+					/>
+					<div>
+						<p class="hidden">{{password.decrypted_note}}</p>
+						<p class="hidden">{{password.decrypted_password}}</p>
+						<h3 class="font-bold teaddxt-lg website-text">{{password.website.url}}</h3>
+						<p class="text-gray-500">{{password.username}}</p>
+						<p class="hidden">{{password.pk}}</p>
+						{% for tag in password.tag_list %}
+						<p class="hidden">{{tag.pk}}</p>
+						<p class="hidden">{{tag.tag_name}}</p>
+						{% endfor %}
+					</div>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div
+			class="col-span-4 bg-white absolute xl:relative inset-0 transform scale-0 xl:scale-100 transition-transform xl:flex flex-col items-center px-5 mx-30 pt-5 z-20 content"
+		>
+			<div
+				class="bg-blue-50 absolute top-10 left-1/3 transform scale-0 transition-transform text-sm md:text-base font-semibold px-6 py-3 shadow-md rounded z-30 message"
+			>
+				<span class="text-green-500">Copied!</span> to clipboard successfully
+			</div>
+			<div class="divide-y divide-gray-300 w-full text-center text-2xl font-semibold alt-container">
+				<h1>No card selected</h1>
+			</div>
+			<div class="divide-y divide-gray-300 w-full hidden main-container">
+				<form method="POST" id="main-form">
+					{% csrf_token %}
+					<input value="2" type="text" name="id" class="hidden on-delete" />
+					<input type="text" name="primary-key" class="hidden primary-key" />
+					<input type="text" name="add_tag_id" class="hidden add_tag_id" />
 
-          <div
-            class="flex flex-col sm:flex-row sm:justify-between gap-3 px-4 pb-8"
-          >
-            <div class="flex items-center gap-8">
-              <img
-                src="https://images.unsplash.com/photo-1584425104581-85f2ae2d8c27?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                alt="Icon"
-                class="w-20 h-20 rounded"
-              />
-              <div>
-                <h3 class="font-bold text-xl md:text-2xl heading"></h3>
-                <p class="text-sm md:text-base text-gray-500 sub-heading"></p>
-              </div>
-              <div>
-                <i
-                  class="far fa-times-circle text-xl md:text-2xl xl:hidden cursor-pointer close-content"
-                ></i>
-              </div>
-            </div>
-            <div class="flex sm:items-center sm:justify-center gap-3">
-              <div
-                class="bg-blue-500 hover:bg-blue-700 text-gray-200 transition-colors flex items-center justify-center gap-2 px-2 py-1 cursor-pointer rounded edit"
-              >
-                <i class="far fa-edit md:text-lg"></i>
-                <p class="font-semibold text-sm md:text-base">Edit</p>
-              </div>
-              <button
-                class="bg-blue-500 hover:bg-blue-700 text-gray-200 transition-colors flex items-center justify-center gap-2 px-2 py-1 rounded hidden done"
-              >
-                <i class="fas fa-check md:text-lg"></i>
-                <p class="font-semibold text-sm md:text-base">Done</p>
-              </button>
-              <div
-                class="bg-blue-500 hover:bg-blue-700 text-gray-200 transition-colors flex items-center justify-center gap-2 px-2 py-1 rounded cursor-pointer delete"
-              >
-                <i class="far fa-trash-alt text-lg"></i>
-                <p class="font-semibold text-sm md:text-base">Delete</p>
-              </div>
-              <div
-                class="absolute right-0 top-24 w-44 flex flex-col items-center justify-center gap-2 bg-blue-100 text-sm md:text-base p-3 transform scale-0 -translate-y-full transition-transform rounded shadow delete-popup"
-              >
-                Are you sure?
-                <div class="flex gap-2">
-                  <button
-                    onclick="document.querySelector('.on-delete').value = 3"
-                    class="bg-red-500 hover:bg-red-700 text-gray-200 transition-colors flex items-center justify-center gap-2 px-2 py-1 rounded delete"
-                  >
-                    <i class="fas fa-check md:text-lg"></i>
-                    <p class="font-semibold text-sm md:text-base">Yes</p>
-                  </button>
-                  <div
-                    class="bg-green-500 hover:bg-green-700 text-gray-200 transition-colors flex items-center justify-center gap-2 px-2 py-1 rounded cursor-pointer close-popup"
-                  >
-                    <i class="fas fa-times md:text-lg"></i>
-                    <p class="font-semibold text-sm md:text-base">No</p>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="bg-blue-500 hover:bg-blue-700 text-gray-200 transition-colors flex items-center justify-center gap-2 px-2 py-1 cursor-pointer rounded hidden cancel"
-              >
-                <i class="fas fa-times md:text-lg"></i>
-                <p class="font-semibold text-sm md:text-base">Cancel</p>
-              </div>
-            </div>
-          </div>
-          <div class="py-8 space-y-2">
-            <div class="p-4 hover:bg-blue-100 transition-colors rounded">
-              <h3 class="font-semibold text-blue-600 text-sm">Website</h3>
-              <p class="md:text-lg website"></p>
-            </div>
-            <div
-              class="p-4 hover:bg-blue-100 transition-colors rounded email-container"
-            >
-              <h3 class="font-semibold text-blue-600 text-sm">Username</h3>
-              <p class="hidden email-text"></p>
-              <input
-                type="text"
-                name="edit_name"
-                class="w-full md:text-lg bg-transparent outline-none email"
-                required
-                readonly
-              />
-            </div>
-            <div
-              class="p-4 hover:bg-blue-100 transition-colors rounded password-container"
-            >
-              <h3 class="font-semibold text-blue-600 text-sm">Password</h3>
-              <p class="hidden password-text"></p>
-              <input
-                type="password"
-                name="edit_password"
-                class="w-full md:text-lg bg-transparent outline-none password"
-                required
-                readonly
-              />
-            </div>
-          </div>
-          <div class="flex px-4 item-center gap-2 password-tags"></div>
-          <div class="px-4 py-8 notes">
-            <h3 class="font-semibold text-blue-600 text-sm">Notes</h3>
-            <textarea
-              name="edit_notes"
-              class="md:text-lg note-text outline-none w-full new-note"
-              readonly
-            ></textarea>
-          </div>
-          <div class="px-4 py-8 hidden add-note">
-            <div
-              class="bg-blue-500 hover:bg-blue-700 text-gray-200 transition-colors flex items-center justify-center gap-2 px-2 py-1 rounded cursor-pointer add-note-button"
-            >
-              <i class="far fa-sticky-note md:text-lg"></i>
-              <p class="font-semibold text-sm md:text-base">Add Note</p>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+					<div class="flex flex-col sm:flex-row sm:justify-between gap-3 px-4 pb-8">
+						<div class="flex items-center gap-8">
+							<img
+								src="https://images.unsplash.com/photo-1584425104581-85f2ae2d8c27?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+								alt="Icon"
+								class="w-20 h-20 rounded"
+							/>
+							<div>
+								<h3 class="font-bold text-xl md:text-2xl heading"></h3>
+								<p class="text-sm md:text-base text-gray-500 sub-heading"></p>
+							</div>
+							<div>
+								<i
+									class="far fa-times-circle text-xl md:text-2xl xl:hidden cursor-pointer close-content"
+								></i>
+							</div>
+						</div>
+						<div class="flex sm:items-center sm:justify-center gap-3">
+							<div
+								class="bg-blue-500 hover:bg-blue-700 text-gray-200 transition-colors flex items-center justify-center gap-2 px-2 py-1 cursor-pointer rounded edit"
+							>
+								<i class="far fa-edit md:text-lg"></i>
+								<p class="font-semibold text-sm md:text-base">Edit</p>
+							</div>
+							<button
+								class="bg-blue-500 hover:bg-blue-700 text-gray-200 transition-colors flex items-center justify-center gap-2 px-2 py-1 rounded hidden done"
+							>
+								<i class="fas fa-check md:text-lg"></i>
+								<p class="font-semibold text-sm md:text-base">Done</p>
+							</button>
+							<div
+								class="bg-blue-500 hover:bg-blue-700 text-gray-200 transition-colors flex items-center justify-center gap-2 px-2 py-1 rounded cursor-pointer delete"
+							>
+								<i class="far fa-trash-alt text-lg"></i>
+								<p class="font-semibold text-sm md:text-base">Delete</p>
+							</div>
+							<div
+								class="absolute right-0 top-24 w-44 flex flex-col items-center justify-center gap-2 bg-blue-100 text-sm md:text-base p-3 transform scale-0 -translate-y-full transition-transform rounded shadow delete-popup"
+							>
+								Are you sure?
+								<div class="flex gap-2">
+									<button
+										onclick="document.querySelector('.on-delete').value = 3"
+										class="bg-red-500 hover:bg-red-700 text-gray-200 transition-colors flex items-center justify-center gap-2 px-2 py-1 rounded delete"
+									>
+										<i class="fas fa-check md:text-lg"></i>
+										<p class="font-semibold text-sm md:text-base">Yes</p>
+									</button>
+									<div
+										class="bg-green-500 hover:bg-green-700 text-gray-200 transition-colors flex items-center justify-center gap-2 px-2 py-1 rounded cursor-pointer close-popup"
+									>
+										<i class="fas fa-times md:text-lg"></i>
+										<p class="font-semibold text-sm md:text-base">No</p>
+									</div>
+								</div>
+							</div>
+							<div
+								class="bg-blue-500 hover:bg-blue-700 text-gray-200 transition-colors flex items-center justify-center gap-2 px-2 py-1 cursor-pointer rounded hidden cancel"
+							>
+								<i class="fas fa-times md:text-lg"></i>
+								<p class="font-semibold text-sm md:text-base">Cancel</p>
+							</div>
+						</div>
+					</div>
+					<div class="py-8 space-y-2">
+						<div class="p-4 hover:bg-blue-100 transition-colors rounded">
+							<h3 class="font-semibold text-blue-600 text-sm">Website</h3>
+							<p class="md:text-lg website"></p>
+						</div>
+						<div class="p-4 hover:bg-blue-100 transition-colors rounded email-container">
+							<h3 class="font-semibold text-blue-600 text-sm">Username</h3>
+							<p class="hidden email-text"></p>
+							<input
+								type="text"
+								name="edit_name"
+								class="w-full md:text-lg bg-transparent outline-none email"
+								required
+								readonly
+							/>
+						</div>
+						<div class="p-4 hover:bg-blue-100 transition-colors rounded password-container">
+							<h3 class="font-semibold text-blue-600 text-sm">Password</h3>
+							<p class="hidden password-text"></p>
+							<input
+								type="password"
+								name="edit_password"
+								class="w-full md:text-lg bg-transparent outline-none password"
+								required
+								readonly
+							/>
+						</div>
+					</div>
+					<div class="flex px-4 item-center gap-2 password-tags"></div>
+					<div class="px-4 py-8 notes">
+						<h3 class="font-semibold text-blue-600 text-sm">Notes</h3>
+						<textarea
+							name="edit_notes"
+							class="md:text-lg note-text outline-none w-full new-note"
+							readonly
+						></textarea>
+					</div>
+					<div class="px-4 py-8 hidden add-note">
+						<div
+							class="bg-blue-500 hover:bg-blue-700 text-gray-200 transition-colors flex items-center justify-center gap-2 px-2 py-1 rounded cursor-pointer add-note-button"
+						>
+							<i class="far fa-sticky-note md:text-lg"></i>
+							<p class="font-semibold text-sm md:text-base">Add Note</p>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </main>
 <script src="{% static 'dashboard/123.js' %}"></script>
 {% endblock content %}
