@@ -36,7 +36,9 @@ $ python manage.py runserver
 ```
 
 - Open 'http://localhost:8000/' to view the application
-
+- Login with   
+            &nbsp;&nbsp;&nbsp;&nbsp;username: faculty   
+            &nbsp;&nbsp;&nbsp;&nbsp;password: Faculty@123
 ## Connecting you database
 
 - Checkout [https://docs.djangoproject.com/en/3.2/ref/databases/](https://docs.djangoproject.com/en/3.2/ref/databases/)
