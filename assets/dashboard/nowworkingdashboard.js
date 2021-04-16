@@ -256,6 +256,7 @@ tag_Container.forEach((tagid) => {
 		tagid.children[0].classList.add("text-white");
 		tagid.children[0].children[0].classList.remove("text-blue-500");
 		tagid.children[0].children[0].classList.add("text-white");
+		closeAllTagContainer();
 	});
 });
 
@@ -284,10 +285,14 @@ const allTagButton = document.querySelector(".all-tags-btn");
 const allTagCloseButton = document.querySelector(".all-tags-close-btn");
 const allTagContainer = document.querySelector(".all-tags-container");
 
+const closeAllTagContainer = () => {
+	allTagContainer.classList.add("-translate-x-full");
+};
+
 allTagButton.addEventListener("click", () => {
 	allTagContainer.classList.remove("-translate-x-full");
 });
 
 allTagCloseButton.addEventListener("click", () => {
-	allTagContainer.classList.add("-translate-x-full");
+	closeAllTagContainer();
 });
