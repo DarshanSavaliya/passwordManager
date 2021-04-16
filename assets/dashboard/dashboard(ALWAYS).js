@@ -1,3 +1,4 @@
+console.log("F")
 const tag_pk = document.querySelector(".tag_pk");
 const passwordContainer = document.querySelector(".password-container");
 const emailContainer = document.querySelector(".email-container");
@@ -183,6 +184,8 @@ function fillData(data) {
 	checkEmptyNote();
 }
 
+const content = document.querySelector(".content");
+const closeContent = document.querySelector(".close-content");
 const cardContainer = document.querySelector(".card-container");
 const cards = document.querySelectorAll(".card");
 const mainContainer = document.querySelector('.main-container');
@@ -192,6 +195,7 @@ const selectedCard = () => {
 	cards.forEach((card) => {
 		card.classList.remove("bg-blue-500");
 		card.classList.remove("text-white");
+		content.classList.remove("scale-100");
 		card.children[1].children[3].style.color = "#6b7280";
 	});
 };
@@ -205,10 +209,14 @@ cards.forEach((card) => {
 		fillData(data);
 		card.classList.add("bg-blue-500");
 		card.classList.add("text-white");
+		content.classList.add("scale-100");
 		card.children[1].children[3].style.color = "#e5e7eb";
 	});
 });
 
+closeContent.addEventListener("click", () => {
+	content.classList.remove("scale-100");
+});
 
 const removeSelectedTag = () => {
 	tag_Container.forEach((tagid) => {
@@ -271,3 +279,16 @@ submitForm = () => {
 	tagInput.value = addTagOption.value;
 	form.submit();
 }
+
+//Mobile Support
+const allTagButton = document.querySelector(".all-tags-btn");
+const allTagCloseButton = document.querySelector(".all-tags-close-btn");
+const allTagContainer = document.querySelector(".all-tags-container");
+
+allTagButton.addEventListener("click", () => {
+	allTagContainer.classList.remove("-translate-x-full");
+});
+
+allTagCloseButton.addEventListener("click", () => {
+	allTagContainer.classList.add("-translate-x-full");
+});
