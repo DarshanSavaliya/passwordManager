@@ -18,7 +18,7 @@ For viewing this web-app, visit https://pass-word-manager-1.herokuapp.com
 
 ## Installation
 
----
+----
 
 - requirements.txt contains all the required packages
 
@@ -38,6 +38,7 @@ $ python manage.py runserver
 - Login with   
             &nbsp;&nbsp;&nbsp;&nbsp;username: faculty   
             &nbsp;&nbsp;&nbsp;&nbsp;password: Faculty@123
+            
 ## Connecting your database
 
 - Visit [https://docs.djangoproject.com/en/3.2/ref/databases/](https://docs.djangoproject.com/en/3.2/ref/databases/)
